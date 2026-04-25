@@ -1,95 +1,85 @@
-```markdown
-# 🏢 Active Directory Lab
+# Active Directory Lab — Shanthiraj Theetla
 
-![Windows Server](https://img.shields.io/badge/Windows%20Server-2022-0078D4?style=flat&logo=windows&logoColor=white)
-![Proxmox](https://img.shields.io/badge/Proxmox-VE-E57000?style=flat&logo=proxmox&logoColor=white)
-![PowerShell](https://img.shields.io/badge/PowerShell-Automation-5391FE?style=flat&logo=powershell&logoColor=white)
-![Entra ID](https://img.shields.io/badge/Microsoft%20Entra%20ID-Hybrid%20Identity-0078D4?style=flat&logo=microsoftazure&logoColor=white)
+Hands-on Active Directory lab documenting real-world AD DS administration, OU design,
+Group Policy, PowerShell automation, troubleshooting, hybrid identity, and PKI
+with Active Directory Certificate Services (AD CS).
 
-> Hands-on Active Directory lab documenting real-world AD DS administration, GPO management,
-> PowerShell automation, and hybrid identity — built on a home lab running Proxmox.
-
----
-
-## 🧱 Lab Environment
-
-| Component         | Details                                      |
-|-------------------|----------------------------------------------|
-| Virtualization    | Proxmox VE (hosted on physical hardware)     |
-| Domain Controller | `dc-prx-01` — Windows Server 2022            |
-| Domain Name       | `learnig.co.in`                              |
-| IP Address        | `192.168.31.10`                              |
-| Client Machine    | Windows 10/11                                |
-| Hybrid Identity   | Microsoft Entra Connect 2.5.79.0             |
-| Entra Tenant      | `Shanthislaboutlook.onmicrosoft.com`         |
+**Certifications:** AZ-900 · AZ-104  
+**In progress:** AZ-500 (Azure Security Engineer)  
+**Lab Domain:** learnig.co.in (Proxmox — Windows Server 2022)  
+**LinkedIn:** (https://www.linkedin.com/in/shanthiraj-theetla-076a58194/)
 
 ---
 
-## 📁 Lab Index
+## Lab Areas
 
-| # | Lab | Description | Status |
-|---|-----|-------------|--------|
-| 01 | [AD DS Setup & Domain Promotion](./01-AD-DS-Setup/) | Install AD DS role, promote server to DC, configure DNS | 
-| 02 | [OUs & Delegation of Control](./02-OUs-Delegation/) | Design OU hierarchy, delegate admin control to specific users | 
-| 03 | [Users & Groups Management](./03-Users-Groups/) | Create/manage users and groups via GUI and PowerShell | 
-| 04 | [Group Policy Objects (GPOs)](./04-GPOs/) | Password policies, logon scripts, software restriction, GPO inheritance |
-| 05 | [PowerShell Automation for AD](./05-PowerShell-AD/) | Bulk user creation, inactive user reports, group membership scripts
-| 06 | [Troubleshooting Scenarios](./06-Troubleshooting/) | Replication failures, account lockouts, DNS issues, logon errors 
-| 07 | [Hybrid Identity — Entra Connect](./07-Hybrid-Identity/) | Sync on-prem AD to Microsoft Entra ID, verified domain, SSO
-
----
-
-## ⚙️ Topics Covered
-
-- **AD DS Installation** — Deploying and promoting a Domain Controller from scratch on Windows Server 2022
-- **DNS Integration** — Configuring DNS as part of AD DS, forward/reverse lookup zones, troubleshooting resolution issues
-- **OU Structure** — Designing organisational units for real-world role-based administration
-- **User & Group Management** — Bulk creation, group types (Security vs Distribution), nesting, and membership management
-- **Group Policy (GPO)** — Implementing and troubleshooting policies across OUs including password, lockout, and desktop policies
-- **PowerShell Automation** — Scripting day-to-day AD tasks using the ActiveDirectory module
-- **Troubleshooting** — Real-world scenarios encountered in lab and professional environments
-- **Hybrid Identity** — Extending on-premises AD to Microsoft Entra ID using Entra Connect with verified custom domain
+| Area | Topics Covered | Status |
+| --- | --- | --- |
+| [01 — AD DS Setup](./01-adds-setup/) | Install AD DS role, promote to DC, DNS configuration | Active |
+| [02 — OUs & Delegation](./02-ous-delegation/) | OU hierarchy design, delegation of control | Active |
+| [03 — Users & Groups](./03-users-groups/) | User creation, group types, nesting, bulk management | Active |
+| [04 — Group Policy](./04-gpos/) | Password policy, logon scripts, GPO inheritance, troubleshooting | Active |
+| [05 — PowerShell Automation](./05-powershell-ad/) | AD cmdlets, bulk operations, inactive user reports | Active |
+| [06 — Troubleshooting](./06-troubleshooting/) | Replication failures, account lockouts, DNS issues, logon errors | Active |
+| [07 — Hybrid Identity](./07-hybrid-identity/) | Entra Connect setup, sync rules, verified domain, SSO | Active |
+| [08 — PKI & AD CS](./08-pki-adcs/) | Install AD CS, Root CA, certificate templates, auto-enrolment, HTTPS | Active |
 
 ---
 
-## 🛠️ Tools & Technologies
+## Lab Environment
 
-| Tool | Purpose |
-|------|---------|
-| Windows Server 2022 | Domain Controller OS |
-| Active Directory Domain Services | Core directory service |
-| DNS Server | Name resolution for AD |
-| Group Policy Management Console | GPO creation and linking |
-| PowerShell (ActiveDirectory module) | Automation and scripting |
-| Microsoft Entra Connect 2.5.79.0 | Hybrid identity sync |
-| Proxmox VE | Home lab virtualisation |
-
----
-
-## 🎯 Objective
-
-To document and demonstrate practical Active Directory skills built through hands-on lab work —
-aligned with real-world IT administration, Azure Administrator (AZ-104), and
-Azure Security Engineer (AZ-500) certification requirements.
+| Component | Details |
+| --- | --- |
+| Virtualization | Proxmox VE (running on physical hardware) |
+| Domain Controller | dc-prx-01 — Windows Server 2022 |
+| Domain Name | learnig.co.in |
+| IP Address | 192.168.31.10 |
+| Client Machine | Windows 10/11 |
+| Hybrid Identity | Microsoft Entra Connect 2.5.79.0 — Password Hash Sync |
+| Entra Tenant | Shanthislaboutlook.onmicrosoft.com |
 
 ---
 
-## 👨‍💻 About Me
+## Hybrid Identity
 
-IT professional with 5+ years of experience across desktop support, Active Directory engineering,
-and systems administration.
+On-premises Active Directory extended into Microsoft Entra ID using Entra Connect.
 
-| | |
-|---|---|
-| 📜 Certifications | Microsoft AZ-900 · AZ-104  | Az-500 (Inprogress)
-| ☁️ Azure Labs | [azure_Learning](https://github.com/shanthirajtheetla/azure_Learning) |
-| 📍 Location | Hyderabad, India |
+| Component | Details |
+| --- | --- |
+| On-prem DC | dc-prx-01 — Windows Server 2022, domain learnig.co.in |
+| Directory Sync | Entra Connect 2.5.79.0 — Password Hash Sync confirmed |
+| Synced Users | testuser@learnig.co.in and additional users synced to Entra ID |
+| Entra Tenant | P2 features enabled — Conditional Access, PIM tested |
+
+**Hybrid lab series:** Covers domain setup, Entra Connect installation, sync verification,
+Conditional Access on synced users, and PIM for hybrid accounts.
 
 ---
 
-## 📌 Notes
+## PKI & AD CS
 
-- Each lab folder contains a full step-by-step `README.md` with commands, screenshots, and outcome verification
-- Labs are built using a personal home lab — no paid sandbox environment used
-- Repository is continuously updated as new scenarios are explored and documented
+Active Directory Certificate Services lab covering enterprise PKI deployment.
+
+| Component | Details |
+| --- | --- |
+| CA Type | Enterprise Root CA — installed on Windows Server 2022 |
+| Role | Active Directory Certificate Services (AD CS) |
+| Topics | Root CA setup, certificate templates, auto-enrolment via GPO, HTTPS certs |
+| AZ-500 Relevance | Certificate-based auth, NDES, integration with Azure services |
+
+---
+
+## Tools & Technologies
+
+- **Administration:** ADUC, GPMC, DNS Manager, Certification Authority MMC
+- **Scripting:** PowerShell — ActiveDirectory module, PKI cmdlets
+- **Hybrid:** Microsoft Entra Connect, Microsoft Entra ID (P2)
+- **Virtualisation:** Proxmox VE, Windows Server 2022
+
+---
+
+## Related Repo
+
+Azure Administrator labs (AZ-104) covering identity, networking, compute, security, and automation:  
+👉 [azure_Learning](https://github.com/Shanthiraj519/azure_Learning)
 ```
